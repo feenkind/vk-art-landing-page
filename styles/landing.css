@@ -1,0 +1,346 @@
+/* CSS FOR LANDING PAGE */
+
+:root {
+  /* animation variables, good for easily changing the times */
+  --duration-animation-1: 2s;
+  --duration-animation-2a: 1.5s;
+  --duration-animation-2b: 3.5s;
+  --duration-animation-3: 0.5s;
+  --duration-animation-4: 2s;
+  --duration-animation-5: 1.5s;
+  --duration-animation-6a: 1s;
+  --duration-animation-6b: 1s;
+  --duration-animation-6c: 1s;
+  --spark-move-distance: calc(var(--logo-width) * 1/3);
+  --spark-rotate: 180deg;
+  --spark-size: 1vw;
+  --start-animation-1: 0s;
+  --start-animation-2a: 1.5s;
+  --start-animation-2b: 2s;
+  --start-animation-3a: 4s;
+  --start-animation-3b: 4.5s;
+  --start-animation-3c: 5s;
+  --start-animation-3d: 5.5s;
+  --start-animation-4: 6s;
+  --start-animation-5: 8s;
+  --start-animation-6a: 9.5s;
+  --start-animation-6b: 10.5s;
+  --start-animation-6c: 11.5s;
+  /* widths and heights */
+  --line-width: 1px;
+}
+
+/* GENERIC */
+body {
+  height: 100vh;
+}
+
+/* center position of wrappers and image */
+div:first-of-type,
+div:first-of-type>div,
+div:first-of-type>img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ANIMATIONS */
+/* animation 1 - sparks */
+div:first-of-type>div:first-child,
+div:first-of-type>div:nth-child(2),
+div:first-of-type>div:nth-child(3),
+div:first-of-type>div:nth-child(4) {
+  animation: sparkRight var(--duration-animation-1) cubic-bezier(.53, .3, .18, 1.53) var(--start-animation-1) forwards;
+  background: var(--black);
+  border-radius: 20%;
+  height: var(--spark-size);
+  width: var(--spark-size);
+}
+
+div:first-of-type>div:first-child {
+  animation-name: sparkRight;
+}
+
+div:first-of-type>div:nth-child(2) {
+  animation-name: sparkBottom;
+}
+
+div:first-of-type>div:nth-child(3) {
+  animation-name: sparkLeft;
+}
+
+div:first-of-type>div:nth-child(4) {
+  animation-name: sparkTop;
+}
+
+@keyframes sparkRight {
+  0% {
+    transform: scale(0) translate(0);
+  }
+
+  50% {
+    transform: scale(1) translate(var(--spark-move-distance)) rotate(var(--spark-rotate));
+  }
+
+  100% {
+    transform: scale(0) translate(0);
+  }
+}
+
+@keyframes sparkLeft {
+  0% {
+    transform: scale(0) translate(0);
+  }
+
+  50% {
+    transform: scale(1) translate(calc(var(--spark-move-distance) * -1)) rotate(var(--spark-rotate));
+  }
+
+  100% {
+    transform: scale(0) translate(0);
+  }
+}
+
+@keyframes sparkTop {
+  0% {
+    transform: scale(0) translate(0);
+  }
+
+  50% {
+    transform: scale(1) translate(0, calc(var(--spark-move-distance) * -1)) rotate(var(--spark-rotate));
+  }
+
+  100% {
+    transform: scale(0) translate(0);
+  }
+}
+
+@keyframes sparkBottom {
+  0% {
+    transform: scale(0) translate(0);
+  }
+
+  50% {
+    transform: scale(1) translate(0, var(--spark-move-distance)) rotate(var(--spark-rotate));
+  }
+
+  100% {
+    transform: scale(0) translate(0);
+  }
+}
+
+/* animation 2 - background of logo */
+img:first-of-type {
+  animation: logoExplode var(--duration-animation-2a) cubic-bezier(1, .73, .38, 1.05) var(--start-animation-2a) forwards, logoVisibility var(--duration-animation-2b) cubic-bezier(.26, .33, .61, 1.06) var(--start-animation-2b) forwards;
+  height: var(--logo-width);
+  opacity: 0;
+  width: var(--logo-width);
+}
+
+@keyframes logoExplode {
+  from {
+    /* translate is needed for centering, transform origin because of the translate */
+    transform: scale(0) translate(-50%, -50%);
+    transform-origin: 0% 0%;
+  }
+
+  to {
+    transform: scale(1) translate(-50%, -50%);
+    transform-origin: 0% 0%;
+  }
+}
+
+@keyframes logoVisibility {
+  to {
+    opacity: 1;
+  }
+}
+
+/* animation 3 - border of initals */
+div:first-of-type>div:nth-of-type(5) {
+  height: calc(var(--logo-width) * 2/3 + 1em);
+  top: 70%;
+  width: calc(var(--logo-width) * 2/3 + 1em);
+}
+
+div:first-of-type>div:nth-of-type(5) span {
+  animation: lineDrawingHorizontal var(--duration-animation-3) linear 0s forwards;
+  background-color: var(--white);
+  bottom: 0;
+  display: block;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+}
+
+div:first-of-type>div:nth-of-type(5) span:first-child,
+div:first-of-type>div:nth-of-type(5) span:nth-child(3) {
+  height: var(--line-width);
+  width: 100%;
+}
+
+div:first-of-type>div:nth-of-type(5) span:nth-child(2),
+div:first-of-type>div:nth-of-type(5) span:nth-child(4) {
+  animation-name: lineDrawingVertical;
+  height: 100%;
+  width: var(--line-width);
+}
+
+div:first-of-type>div:nth-of-type(5) span:first-child {
+  animation-delay: var(--start-animation-3a);
+  transform-origin: right;
+}
+
+div:first-of-type>div:nth-of-type(5) span:nth-child(2) {
+  animation-delay: var(--start-animation-3b);
+  transform-origin: bottom;
+}
+
+div:first-of-type>div:nth-of-type(5) span:nth-child(3) {
+  animation-delay: var(--start-animation-3c);
+  top: 0;
+  transform-origin: left;
+}
+
+div:first-of-type>div:nth-of-type(5) span:nth-child(4) {
+  animation-delay: var(--start-animation-3d);
+  left: 100%;
+  transform-origin: top;
+}
+
+@keyframes lineDrawingHorizontal {
+  0% {
+    box-shadow: none;
+    opacity: 1;
+    transform: scale(0, 1);
+  }
+
+  50% {
+    box-shadow: 0px 0px 0.8em 0.2em var(--white);
+  }
+
+  100% {
+    box-shadow: none;
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes lineDrawingVertical {
+  0% {
+    box-shadow: none;
+    opacity: 1;
+    transform: scale(1, 0);
+  }
+
+  50% {
+    box-shadow: 0px 0px 0.8em 0.2em var(--white);
+  }
+
+  100% {
+    box-shadow: none;
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}
+
+/* animation 4 - fade in initials */
+img:nth-of-type(2) {
+  animation: initialsFadeIn var(--duration-animation-4) ease-in var(--start-animation-4) forwards;
+  height: calc(var(--logo-width) * 2/3);
+  opacity: 0;
+  width: calc(var(--logo-width) * 2/3);
+}
+
+@keyframes initialsFadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* animation 5 - black background */
+body>div:last-of-type {
+  animation: darkBackground var(--duration-animation-5) ease var(--start-animation-5) forwards;
+  background: var(--black);
+  bottom: 0;
+  height: 0;
+  left: 0;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+
+body>div:first-of-type {
+  animation: moveLogo var(--duration-animation-5) ease var(--start-animation-5) forwards;
+}
+
+@keyframes darkBackground {
+  to {
+    height: var(--background-height);
+  }
+}
+
+@keyframes moveLogo {
+  to {
+    top: calc(var(--logo-width) / 2 + var(--logo-top-distance));
+  }
+}
+
+/* animation 6 - display name and link */
+h1 {
+  animation: display var(--duration-animation-6a) ease var(--start-animation-6a) forwards;
+  color: var(--white);
+  line-height: 1;
+  margin: 1em 0 2em 0;
+  opacity: 0;
+}
+
+h1>span:first-child {
+  font-weight: 100;
+}
+
+h1>span:nth-child(2) {
+  font-weight: 400;
+}
+
+a,
+a:link,
+a:visited,
+a:focus,
+a:active,
+a:hover {
+  animation: displayBorders var(--duration-animation-6c) ease-in-out var(--start-animation-6c) forwards, display var(--duration-animation-6b) ease var(--start-animation-6b) forwards;
+  border: 1px solid rgba(255, 255, 255, 0);
+  color: var(--white);
+  display: inline-block;
+  font-size: 1.5em;
+  font-weight: 300;
+  opacity: 0;
+  padding: 0.5em 1em;
+  text-transform: uppercase;
+  transition: box-shadow 0.5s ease-in-out;
+}
+
+a:hover {
+  box-shadow: 0px 0px 0.5em 0 var(--white);
+}
+
+@keyframes display {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes displayBorders {
+  to {
+    border: 1px solid var(--white);
+  }
+}
+
+/* MEDIA QUERIES */
+@media all and (max-width: 62rem) {
+  body>div {
+    padding: 0 1rem;
+  }
+}

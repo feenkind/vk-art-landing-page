@@ -1,0 +1,54 @@
+/* BASIC CSS NEEDED FOR LANDING PAGE AND MAIN PAGE */
+
+@font-face {
+  font-family: Yantramanav;
+  src: url('../fonts/Yantramanav-Thin.ttf');
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: Yantramanav;
+  src: url('../fonts/Yantramanav-Light.ttf');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: Yantramanav;
+  src: url('../fonts/Yantramanav-Regular.ttf');
+  font-weight: 400;
+}
+
+:root {
+  /* colors */
+  --black: rgba(29, 29, 29, 1);
+  --gold: rgba(194, 186, 140, 1);
+  --green: rgb(16, 79, 63);
+  --grey: rgba(29, 29, 29, 0.6);
+  --lightgrey: rgba(228, 228, 228, 1);
+  --red: rgb(208, 60, 26);
+  --superlightgrey: rgba(228, 228, 228, 0.7);
+  --white: rgba(255, 255, 255, 1);
+  --white-transparent: rgba(255, 255, 255, 0.5);
+  /* widths and heights */
+  /* calculating with vh and vw is a problem on iPhone, so we set it fix
+  also iOS has problems calculating 100vh, so we need a little more room (20vh) to play here
+  if we don't want to use javascript and different media queries */
+  --background-height: 50vh;
+  --logo-width: 30vh;
+  --logo-top-distance: 2rem;
+}
+
+body {
+  font-family: Yantramanav, Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+a,
+a:link,
+a:visited,
+a:focus,
+a:active,
+a:hover {
+  text-decoration: none;
+}
